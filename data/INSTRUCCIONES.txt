@@ -1,0 +1,6 @@
+Coloca aquí, si cuentas con permiso de uso y previa revisión de datos personales:
+- data_clean.csv       (Genshin Impact)
+- data_clean_hsr.csv   (Honkai: Star Rail)
+
+La web también puede cargar los archivos desde los enlaces RAW del repositorio original cuando no existen copias locales.
+Los datasets originales NO están incluidos en este ZIP.

@@ -1,0 +1,6 @@
+# Archivos de Windows
+desktop.ini
+Thumbs.db
+
+# Archivos temporales de Python
+__pycache__/
