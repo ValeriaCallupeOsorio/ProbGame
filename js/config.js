@@ -1,8 +1,17 @@
 export const CONFIG={
- genshin:{name:'Genshin Impact',source:'https://raw.githubusercontent.com/noviardhana/history_gi/main/data/data_clean.csv',local:'data/data_clean.csv',bannerLabels:{'Character Event':'Personajes promocionales','Weapon Event':'Armas promocionales','Standard':'Banner permanente','Beginner':'Banner de principiantes','Beginners Wish':'Banner de principiantes','Chronicled Wish':'Banner recopilatorio'},categoryLabels:{character:'Personaje',weapon:'Arma'}},
- hsr:{name:'Honkai: Star Rail',source:'https://raw.githubusercontent.com/noviardhana/history_gi/main/data/data_clean_hsr.csv',local:'data/data_clean_hsr.csv',bannerLabels:{'Character Event':'Personajes promocionales','Light Cone Event':'Conos de luz promocionales','Standard':'Banner permanente','Departure Warp':'Banner de principiantes','Character Collaboration':'Personajes de colaboración','Light Cone Collaboration':'Conos de luz de colaboración'},categoryLabels:{character:'Personaje',light_cone:'Cono de luz'}}
+ genshin:{name:'Genshin Impact',source:'https://raw.githubusercontent.com/noviardhana/history_gi/main/data/data_clean.csv',local:'data/data_clean.csv',bannerLabels:{'Character Event':'Personajes promocionales','Weapon Event':'Armas promocionales','Standard':'Banner permanente','Beginner':'Banner de principiantes','Beginners':'Banner de principiantes','Beginners Wish':'Banner de principiantes','Chronicled Wish':'Banner recopilatorio'},categoryLabels:{character:'Personaje',weapon:'Arma'}},
+ hsr:{name:'Honkai: Star Rail',source:'https://raw.githubusercontent.com/noviardhana/history_gi/main/data/data_clean_hsr.csv',local:'data/data_clean_hsr.csv',bannerLabels:{'Character Event':'Personajes promocionales','Light Cone Event':'Conos de luz promocionales','Standard':'Banner permanente','Departure Warp':'Banner de principiantes','Beginners':'Banner de principiantes','Character Collaboration':'Personajes de colaboración','Light Cone Collaboration':'Conos de luz de colaboración','Collab Character Event':'Personajes de colaboración','Collab Light Cone Event':'Conos de luz de colaboración'},categoryLabels:{character:'Personaje',light_cone:'Cono de luz'}}
 };
 export const TARGETS=[{value:'rarity5',label:'Cualquier recompensa de ★★★★★'},{value:'rarity4',label:'Cualquier recompensa de ★★★★'},{value:'rarity3',label:'Cualquier recompensa de ★★★'},{value:'character5',label:'Personaje ★★★★★'},{value:'character4',label:'Personaje ★★★★'},{value:'gear5',label:'Arma / cono de luz ★★★★★'},{value:'gear4',label:'Arma / cono de luz ★★★★'}];
+// Los banners promocionales y de colaboración solo ofrecen una clase de 5★.
+// No restringir los permanentes, principiantes ni recopilatorios (Chronicled Wish).
+const CHARACTER_BANNERS=new Set(['Character Event','Character Collaboration','Collab Character Event']);
+const GEAR_BANNERS=new Set(['Weapon Event','Light Cone Event','Light Cone Collaboration','Collab Light Cone Event']);
+export function targetsForBanner(banner){
+ if(CHARACTER_BANNERS.has(banner))return TARGETS.filter(t=>t.value!=='gear5');
+ if(GEAR_BANNERS.has(banner))return TARGETS.filter(t=>t.value!=='character5');
+ return TARGETS;
+}
 export function isSuccess(r,target){if(target==='rarity5')return r.rarity===5;if(target==='rarity4')return r.rarity===4;if(target==='rarity3')return r.rarity===3;if(target==='character5')return r.rarity===5&&r.item_category==='character';if(target==='character4')return r.rarity===4&&r.item_category==='character';if(target==='gear5')return r.rarity===5&&r.item_category!=='character';if(target==='gear4')return r.rarity===4&&r.item_category!=='character';return false;}
 
 
