@@ -389,6 +389,14 @@ En cada videojuego mostramos un formulario que permite seleccionar:
 
 El sistema genera las opciones de banner según las categorías presentes en los datos cargados.
 
+El selector de recompensa se actualiza automáticamente según el banner: en los
+promocionales de personajes (incluidos los de colaboración) se oculta la opción
+«Arma / cono de luz ★★★★★»; en los promocionales de armas o conos de luz
+(incluidos los de colaboración) se oculta «Personaje ★★★★★». En los banners
+permanentes y de principiantes se conservan todas las opciones, al igual que en
+el banner recopilatorio, que puede incluir ambas clases de recompensa. La
+selección de rareza general y las opciones de 3★ y 4★ no se modifican.
+
 ## 7.3. Probabilidades automáticas
 
 Configuramos ProbGame para proponer tasas consolidadas de referencia en determinadas categorías de cinco estrellas, cuando contamos con una referencia documentada.
@@ -436,8 +444,8 @@ El panel de resultados presenta:
 - Probabilidad introducida.
 - Frecuencia observada.
 - Número de aperturas analizadas.
-- Número de éxitos observados.
-- Comparación visual de probabilidades.
+- Número de éxitos esperados (aperturas analizadas multiplicadas por la probabilidad declarada).
+- Comparación visual de probabilidades con éxitos esperados y éxitos observados junto a los porcentajes.
 - Intervalo de confianza de Wilson.
 - Distribución de recompensas por rareza.
 - Interpretación resumida.
@@ -535,6 +543,8 @@ Donde:
 - \(p_0\) representa la probabilidad de referencia.
 
 La diferencia permite expresar cuántos puntos porcentuales separan ambos valores.
+
+El panel también muestra los **éxitos esperados** como `n × p₀`, donde `n` es el número de aperturas y `p₀` es la probabilidad declarada expresada entre 0 y 1. Este valor puede ser decimal y cambia al modificar la probabilidad introducida. Los **éxitos observados** corresponden a `k` y se calculan únicamente a partir de los registros, sin depender de la probabilidad declarada. Ambas cantidades se visualizan junto a sus porcentajes correspondientes.
 
 No obstante, una diferencia pequeña o grande no determina por sí sola si un mecanismo cumple sus reglas, pues intervienen las condiciones de muestreo y el modelo probabilístico.
 
@@ -918,6 +928,12 @@ No presentamos datos simulados como si fueran aperturas reales.
 Tampoco atribuimos al equipo la creación original de conjuntos de datos externos.
 
 Los resultados se comunican junto con sus supuestos y limitaciones, con el propósito de promover una interpretación responsable de la probabilidad.
+
+---
+
+**ProbGame — Proyecto académico de Estructuras Discretas I**
+
+*Simulación de experimentos discretos y contraste con probabilidades de referencia.*
 
 ---
 
