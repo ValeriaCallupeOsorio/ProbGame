@@ -1,15 +1,13 @@
 # 🎮 ProbGame
 ### Plataforma educativa para el análisis de probabilidades en videojuegos
 
-**Proyecto académico — Estructuras Discretas I**
-
 **Tema:** Simulación de experimentos discretos y contraste con probabilidades exactas.
 
 **Videojuegos analizados:** Genshin Impact y Honkai: Star Rail.
 
 **Tecnologías:** HTML5, CSS3, JavaScript y Python como herramienta auxiliar.
 
-**Modalidad:** Aplicación web educativa.
+**Modalidad:** Página web educativa.
 
 ---
 
